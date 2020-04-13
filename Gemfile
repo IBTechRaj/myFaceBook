@@ -38,7 +38,7 @@ gem 'rubocop', '~> 0.74.0'
 gem 'will_paginate', '~> 3.1', '>= 3.1.8'
 
 gem 'bootstrap-will_paginate', '~> 1.0'
-gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'twitter-bootstrap-rails'
 
 gem 'devise-bootstrap-views'
