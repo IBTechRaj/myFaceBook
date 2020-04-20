@@ -1,0 +1,55 @@
+        <nav class="navbar navbar-expand-md "  style= "background-color: #3b59b6">
+        
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        
+         <ul class="navbar-nav mr-auto">
+         <% if user_signed_in? %>
+            <li class="nav-item" id="fb-logo">
+            <%= image_tag("facebook-icon.png", :alt => "no img") %>
+            </li>
+            <li class="nav-item">
+            <div id="fb-search-set">
+            <form id="searchThis" action="/search" style="display: inline;" method="get"><input onfocus="if(this.value==this.defaultValue)this.value='';" value="Search " type="text" id="searchBox" onblur="if(this.value=='')this.value=this.defaultValue;" vinput="" name="q" /> </form>
+
+           
+            <input id="searchButton" value="" type="image" <%= image_tag 'search.png' %>      
+          
+           </div>
+            </li>
+            <li class="nav-item active">
+                <%= link_to   current_user.first_name, user_path(current_user), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Home", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Find Friends", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Create", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to ('<i class="fa fa-users"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to ('<i class="fa fa-comment"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to ('<i class="fa fa-bell"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to ('<i class="fa fa-question-circle"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to ('<i class="fa fa-sort-down"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+            
+        <% end %>
+        </ul>
+        
+    
+      
+        </nav>
+

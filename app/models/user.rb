@@ -13,4 +13,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+
+
+  def full_name
+    return "#{first_name} #{last_name}".strip if first_name || last_name
+
+    'Annonymous'
+  end
 end

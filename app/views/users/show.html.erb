@@ -1,0 +1,93 @@
+<h1>Users#show</h1>
+ <div class="container-fluid gedf-wrapper">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="h5"><%= @user.full_name %></div>
+                        <%= gravatar_for @user, size: 80 %><br><br>
+                        <div class="h7 text-muted">Fullname   : <%= @user.full_name %></div>
+                        <div class="h7 text-muted">Email      : <%= @user.email %></div>
+                        <div class="h7 text-muted">Gender     : <%= @user.gender %></div>
+                        <div class="h7 text-muted">Date of Birth: <%= @user.date_of_birth.to_formatted_s(:long_ordinal) %></div>
+                        <div class="h7">
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="h6 text-muted">Friends</div>
+                            <!-- <div class="h5"><#%= @user.friends.count %></div> -->
+                        </li>
+                        <% if @user === current_user %>
+                            <li class="list-group-item">
+                                <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+                            </li>
+
+                        <#% elsif @user != current_user && !current_user.friend?(@user) %>
+                            <li class="list-group-item">
+                                        
+                                        <#%= form_for(@friendship, url: friendships_path(@friendship)) do |f| %>
+              
+                                            <#%= f.hidden_field :friend_id, value: @user.id  %>
+                                            <#%= f.submit "Add As Friend", class: "btn btn-primary" %>
+                                        <#% end %>
+                                    </li>
+                        <#% elsif current_user.friend?(@user) %>
+                            <li class="list-group-item">
+                            <#%= link_to "Unfriend",  delete_friend_path(@user), method: :delete,  data: { confirm: "Are you sure you no longer want to be friends with this user ?"}, class: "btn btn-danger" %>
+            
+                                       
+                            </li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 gedf-main">
+
+             <#%= render 'posts/all_posts' %>   
+            </div>
+            <div class="col-md-3">
+                <% if current_user == @user %>
+                    <div class="card gedf-card">
+                        <div class="card-body">
+                            <h5 class="card-title"> Friends        (<#%= current_user.friends.count %>)</h5>
+                            <#% current_user.friends.each do | friend | %>
+                                <div class="space-it">
+                                    <#%= gravatar_for friend, size: 40 %>
+                                    <span class="card-subtitle mb-2 text-muted left-shift"><#%= link_to friend.full_name, user_path(friend) %></span>
+                                </div>
+                    
+                            <#% end %>
+                        </div>
+                    </div>
+                <% else %>
+            
+                    <#% if !current_user.mutual_friends(@user).nil? %>
+                        <div class="card gedf-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Mutual Friends        (<#%= current_user.mutual_friends(@user).count %>)</h5>
+
+                                <#% current_user.mutual_friends(@user).each do | user | %>
+                                    <div class= "space-it">
+
+                                        <#%= gravatar_for user, size: 40 %>
+                                        <span class="card-subtitle mb-2 text-muted left-shift"><#%= link_to user.full_name, user_path(user) %></span>
+                                    </div>
+                        
+                                <#% end %>
+                            </div>
+                        </div>
+                    <#% else %>
+                        <div class="card gedf-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Mutual Friends        (<#%= current_user.mutual_friends(@user).count %>)</h5>                                
+                                <h6 class="card-subtitle mb-2 text-muted">You have no mutual friends with this user</h6>
+                            </div>
+                        </div>
+                    <#% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+
