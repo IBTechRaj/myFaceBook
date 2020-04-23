@@ -84,4 +84,67 @@ body{
     background-color: #F5F6F7;
 }
 
-/*** from other project ***/
+.padder {
+height: 150px;
+}
+.new-post-header {
+background-color: #F5F6F7;
+margin-bottom: 0;
+}
+.form-body {
+  margin-top: 0;
+  }
+.custom-bg {
+background-color: #365899;
+color: white;
+font-style:  bold;
+}
+
+.card-bg {
+background-color: white;
+}
+
+.card-header {
+width: 500px;
+padding: 6px 12px;
+}
+.card-body {
+width: 500px;
+padding: 6px 12px;
+}
+.card-footer {
+width: 500px;
+padding: 6px 12px;
+}
+.card-text {
+border-bottom: solid 1px;
+}
+#line {
+height: 1px;
+}
+.dropdown-toggle::after {
+display: none;
+}
+.h7 {
+            font-size: 0.8rem;
+        }
+
+        .gedf-wrapper {
+            margin-top: 0.97rem;
+        }
+
+        @media (min-width: 992px) {
+            .gedf-main {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+            .gedf-card {
+                margin-bottom: 2.77rem;
+            }
+        }
+
+        /**Reset Bootstrap*/
+        .dropdown-toggle::after {
+            content: none;
+            display: none;
+        }

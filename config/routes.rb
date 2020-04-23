@@ -27,8 +27,8 @@ as :user do
 
 
   #resources :users, only: [:show,:index]
-  #resources :posts, only: [:show, :create, :edit, :update, :destroy] do
-  #end
+  resources :posts, only: [:show, :create, :edit, :update, :destroy] do
+  end
   #get 'home/index'
   
   #get 'home#index'

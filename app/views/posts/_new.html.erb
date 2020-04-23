@@ -1,0 +1,16 @@
+<div class=" gedf-card">
+<div class=" card-body  ">
+<%= form_for(@post, :html => {class: "form-horizontal ", id: "post-form", role: "form"}) do |f| %>
+    <% if @post.errors.any? %>
+        <%= pluralize(@post.errors.count, "error") %>
+        <% @post.errors.full_messages.each do |msg| %> 
+            <%= msg %> 
+        <% end %> 
+    <% end %>
+    <h5 class="form-control mb-0 new-post-header">Create Post </h5>
+    <!-- <#%= f.text_field :title, class: 'form-control', id: "post-title" %> --> 
+    <%= f.text_area :body, rows: 3, class: 'form-control form-body', placeholder: 'Write something here'  %>
+    <%= f.submit class: 'btn custom-bg text-white btn-block rounded-2 py-2' %>
+<% end %>
+</div>
+</div>
