@@ -4,9 +4,12 @@ class PostsController < ApplicationController
   def index
     @post=Post.new
     @posts=Post.all
+    @comment = @post.comments.build
+    @comments = @post.comments
   end
 
   def new
+    @post=Post.new
   end
 
   def edit
@@ -41,9 +44,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @posts=current_user.posts
-  end
+  def show;  end
 
   def destroy
     if @post.user == current_user

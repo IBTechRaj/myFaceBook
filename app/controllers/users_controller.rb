@@ -7,5 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @post = Post.new
     @posts = @user.posts
+    @comment = @post.comments.build
+    @comments = @post.comments
   end
 end

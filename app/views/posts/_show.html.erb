@@ -1,45 +1,124 @@
 
- 
- <% @posts.each do |post| %>
-   <div class="gedf-card    ">
-       <div class="card-body card-bg ml-3">     
-           <div class="d-flex justify-content-between align-items-center">
-               <div class="d-flex justify-content-between align-items-center">
-                   <div class="mx-2 my-1">
-                        <%= gravatar_for post.user, size: 35, class: "circle " %>
-                   </div>
-                   <div class="ml-2">
-                       <div class="text-muted px-2"><%=link_to post.user.first_name, user_path(post.user)%></div>
-                       <div class="text-muted px-2"> <i class="fa fa-clock-o"></i> <%= time_ago_in_words(post.created_at)  %> ago</div>                     
-                   </div>
-                </div>
-                <div>
-                   <div class="dropdown ">
-                       <% if post.user === current_user %>
-                           <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               <i class="fa fa-ellipsis-h"></i>
-                           </button>
-                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                <%= link_to "Edit", edit_post_path(post), class: "dropdown-item" %>
-                                <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure you want to delete this post ?"}, class: "dropdown-item" %>
-                           </div>
-                       <% end %>
-                   </div>
-                </div>              
-           </div>
-       </div>
-       <div class="card-body card-bg ml-3 mb-0">
-            
-           <p class="card-text">
-              <%= post.body %>
-              <hr style="height:1px padding: 0px 0px margin: 1px 0px">
-           </p>
-           
-       </div>
-       <div class="card-body card-bg ml-3 mb-4 mt-0 " id="line">
-                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                        <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+
+<% @posts.each do |post| %>
+  <div class="gedf-card    ">
+    <div class="card-body card-bg ml-3">     
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="mx-1 my-1">
+            <%= gravatar_for post.user, size: 30, class: "circle " %>
+          </div>
+          <div class="ml-2">
+            <div class="text-muted px-2"><%=link_to post.user.first_name, user_path(post.user)%></div>
+            <div class="text-muted px-2"> <i class="fa fa-clock-o"></i> <%= time_ago_in_words(post.created_at)  %> ago</div>                     
+          </div>
         </div>
-   </div>
+        <div>
+          <div class="dropdown ">
+            <% if post.user === current_user %>
+              <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-ellipsis-h"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
+                <%= link_to "Edit", edit_post_path(post), class: "dropdown-item" %>
+                <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure you want to delete this post ?"}, class: "dropdown-item" %>
+              </div>
+            <% end %>
+          </div>
+        </div>              
+      </div>
+    </div>
+    <div class="card-body card-bg ml-3 mb-0">         
+      <p class="card-text">
+        <%= post.body %>
+      </p>   
+       <hr style="margin: 0px 0px"> 
+    </div>
+    <div class="card-body card-bg ml-3  mt-0 py-2" id="line">
+    
+      
+     
+
+
+    <div>
+      <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+              <%= link_to ('<i class="fa fa-heart " aria-hidden="true"></i>').html_safe, post_like_path(post, pre_like), method: :delete %>
+          <% else %>
+              <%= link_to ('<i class="fa fa-heart-o" aria-hidden="true"></i>').html_safe, post_likes_path(post), method: :post, class: "card-link" %>
+          <% end %>
+          <% if post.likes.any? %>
+              <span class="blue-link mr-5"><%= post.likes.count %></span>
+          <% else %>
+              <%= link_to "Like", post_likes_path(post), method: :post, class: "blue-link mr-5" %>
+          <% end %>       
+          <% if pre_like %>
+                <%= link_to "Unlike", post_like_path(post, pre_like), method: :delete, class: "right mr-5" %>
+          <% end %>
+
+          <div class="float-right">
+          <% if post.comments.count > 0 %>          
+            <i class="fa fa-comment mr-1"></i><%= post.comments.count ' Comments' %> Comments 
+            <% else %>
+            <i class="fa fa-comment mr-1"></i> Comment
+            <%end%>
+          </div>
+      </div>
+
+
+
+      <hr style="margin: 10px 0px 0px 0px"> 
+    </div>
+    <!-- likes etc. -->
+    
+    <!-- comments display and comment form -->
+
+    <div class="card-body card-bg ml-3  mt-0">
+      <% if post.comments.any? %>
+        <% post.comments.each do |comment| %>
+          <div class="post-footer-comment-wrapper">
+            <div class="comment-form">
+            </div>
+            <div class="comment">
+              <div class="media">
+                <div class="media-left mx-1 my-1" id= "padding-needed">
+                    <%= link_to gravatar_for(comment.user, size: 30), "#" %>
+                </div>
+                <div class="media-body">
+                  <h5 class="media-heading"> <%=link_to comment.user.full_name, user_path(comment.user) %> <small><div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %></div> </small></h5>   
+                  <p id = "comment-body"><%= comment.body %><br>
+                  <% if comment.user == current_user%>
+                    <small id="minute"><%= link_to "Edit", edit_post_comment_path(post,comment) %></small>
+                    <small class="delete-link"><%=  link_to "Delete",  post_comment_path(post,comment), method: :delete , data: { confirm: "Are you sure you want to delete this comment ?"}%>
+                    </small>
+                   
+                  <% end %>     
+                                                            
+                </div>
+                
+              </div>
+               <hr style="margin: 10px 0px">
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <%= form_for [post, @comment], :html => {class: "form-horizontal", role: "form"} do |f| %>
+        <div class='form-group'>
+          <div class="media">
+            <div class="media-left mx-4 my-1">
+                    <%= link_to gravatar_for(current_user, size: 30), "#" %>
+                </div>
+            <div >
+              <%= f.text_area :body, rows: 1, class: 'form-control1', placeholder: 'Your comment', size: "34x1" %>
+            </div>
+            <div class="comment-btn">
+              <%= f.submit "Add Comment", class: "btn btn-primary btn-sm pull-right" %>
+            </div>
+          </div>                               
+        </div>
+      <% end %>
+    </div>
+  </div>
 <% end %>
+
+                

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  #get 'comments/create'
+  #get 'comments/edit'
+  #get 'comments/update'
+  #get 'comments/destroy'
   devise_for :users, :controllers => { :registrations => "user/registrations" }
   resources :users, only: [:show,:index]
   #get 'users/index'
@@ -27,7 +32,9 @@ as :user do
 
 
   #resources :users, only: [:show,:index]
-  resources :posts, only: [:show, :create, :edit, :update, :destroy] do
+  #resources :posts, only: [:show, :create, :edit, :update, :destroy] do
+  resources :posts do
+    resources :comments, :likes
   end
   #get 'home/index'
   
