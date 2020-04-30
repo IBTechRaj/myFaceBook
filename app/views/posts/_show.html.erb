@@ -35,10 +35,6 @@
        <hr style="margin: 0px 0px"> 
     </div>
     <div class="card-body card-bg ml-3  mt-0 py-2" id="line">
-    
-      
-     
-
 
     <div>
       <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
@@ -58,14 +54,12 @@
 
           <div class="float-right">
           <% if post.comments.count > 0 %>          
-            <i class="fa fa-comment mr-1"></i><%= post.comments.count ' Comments' %> Comments 
+            <i class="fa fa-comment mr-1"></i><%= post.comments.count ' Comments' %> Comment(s) 
             <% else %>
             <i class="fa fa-comment mr-1"></i> Comment
             <%end%>
           </div>
       </div>
-
-
 
       <hr style="margin: 10px 0px 0px 0px"> 
     </div>

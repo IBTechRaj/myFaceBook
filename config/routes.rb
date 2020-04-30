@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'friendships/create'
   get 'likes/create'
   #get 'comments/create'
   #get 'comments/edit'
@@ -40,4 +41,9 @@ as :user do
   
   #get 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :friendships
+  delete "/delete_friend", to: "friendships#destroy" 
+  delete "/cancel_friend", to: "friendships#cancel"
+  delete "/reject_friend", to: "friendships#reject"  
+  patch "/confirm_friend", to: "friendships#confirm" 
 end

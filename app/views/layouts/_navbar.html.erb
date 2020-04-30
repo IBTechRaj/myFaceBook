@@ -17,6 +17,9 @@
             <li class="nav-item">
                 <%= link_to   current_user.first_name, user_path(current_user), class: "nav-link" %>
             </li>
+            <li class="nav-item">
+                <%= link_to "All Users", users_path, class: "nav-link" %>
+            </li>
             <li class="nav-item active">            
                     <%= link_to "Home",  authenticated_root_path, class: "nav-link" %>       
             </li>
@@ -27,19 +30,27 @@
                 <%= link_to "Create", "#", class: "nav-link" %>
             </li>
             <li class="nav-item">
-                <%= link_to ('<i class="fa fa-users"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
+                <%= link_to ('<i class="fa fa-users" style="color: black"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
             </li>
             <li class="nav-item">
-                <%= link_to ('<i class="fa fa-comment"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
+                <%= link_to ('<i class="fa fa-comment" style="color: black"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
             </li>
             <li class="nav-item">
-                <%= link_to ('<i class="fa fa-bell"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
+            <%= link_to ('<i class="fa fa-bell" style="color: black" aria-hidden="true"></i>').html_safe, users_path, class: "nav-link" %>
+                  
+              <% if current_user.friend_requests.count > 0 %>
+              <%= link_to ('<i class="fa fa-bell" style="color: white" aria-hidden="true"></i>').html_safe, users_path, class: "nav-link" %>
+            
+                  <span id="notification"><%=  current_user.friend_requests.count %></span>                  
+              <% end%> 
+                
             </li>
             <li class="nav-item">
-                <%= link_to ('<i class="fa fa-question-circle"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
+            
+                <%= link_to ('<i class="fa fa-question-circle" style="color: black"  aria-hidden="true"></i>').html_safe, "#", class: "nav-link" %>
             </li>
             <li class="nav-item">
-                <%= link_to ('<i class="fa fa-sort-down"  aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Sign Out"></i>').html_safe,  destroy_user_session_path, method: :delete, class: "nav-link" %>            
+                <%= link_to ('<i class="fa fa-sort-down" style="color: black"  aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Sign Out"></i>').html_safe,  destroy_user_session_path, method: :delete, class: "nav-link" %>            
             </li>
             
             

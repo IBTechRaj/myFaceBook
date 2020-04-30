@@ -15,20 +15,20 @@
                 <div class="col-md-3">
                 </div>
                 <div class="col-md-3">
-                    <#% if current_user.friend?(user) %>
-                    <#%= link_to "Unfriend",  delete_friend_path(user), method: :delete,  data: { confirm: "Are you sure you no longer want to be friends with this user ?"},  class: "btn btn-danger btn-sm" %>
+                    <% if current_user.friend?(user) %>
+                    <%= link_to "Unfriend",  delete_friend_path(user), method: :delete,  data: { confirm: "Are you sure you no longer want to be friends with this user ?"},  class: "btn btn-danger btn-sm" %>
                     
-                    <#% elsif current_user.sent_request?(user) %>
-                        <#%= link_to "Cancel Request", cancel_friend_path(user), method: :delete, class: "btn btn-warning btn-sm" %>
-                    <#% elsif current_user.friend_requests.include?(user) %>
-                        <#%= link_to "Accept", confirm_friend_path(user), method: :patch, class: "btn btn-success btn-sm spacing" %><#%= link_to "Reject", reject_friend_path(user), method: :delete, class: "btn btn-danger btn-sm"  %>
-                    <#% else %>
-                        <#%= form_for(@friendship, url: friendships_path(@friendship), class: "change") do |f| %>
+                    <% elsif current_user.sent_request?(user) %>
+                        <%= link_to "Cancel Request", cancel_friend_path(user), method: :delete, class: "btn btn-warning btn-sm" %>
+                    <% elsif current_user.friend_requests.include?(user) %>
+                        <%= link_to "Accept", confirm_friend_path(user), method: :patch, class: "btn btn-success btn-sm spacing" %><%= link_to "Reject", reject_friend_path(user), method: :delete, class: "btn btn-danger btn-sm"  %>
+                    <% else %>
+                        <%= form_for(@friendship, url: friendships_path(@friendship), class: "change") do |f| %>
                         
-                            <#%= f.hidden_field :friend_id, value: user.id  %>
-                            <#%= f.submit "Add As Friend", class: "btn btn-primary btn-sm" %>
-                        <#% end %>
-                    <#% end %>
+                            <%= f.hidden_field :friend_id, value: user.id  %>
+                            <%= f.submit "Add As Friend", class: "btn btn-primary btn-sm" %>
+                        <% end %>
+                    <% end %>
                 </div>
                 
             </div>
