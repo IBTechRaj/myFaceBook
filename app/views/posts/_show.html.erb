@@ -32,6 +32,7 @@
       <p class="card-text">
         <%= post.body %>
       </p>   
+      <%= image_tag post.picture.url if post.picture? %> 
        <hr style="margin: 0px 0px"> 
     </div>
     <div class="card-body card-bg ml-3  mt-0 py-2" id="line">
