@@ -1,59 +1,57 @@
 
-<div class="container-fluid" style= "background-color: #3C5A98; margin: -50px 0px 0px 0px; height: 70px; width=100%">
-  <div class="row  px-0 mx-0">
-    <div class="col-lg-6 mx-0 px-0"><h1 class="fb-logo-main"> fakebook</h1>
+<div class="container-fluid" style= "background-color: #3b59b6; margin: -50px 0px 0px 0px; padding: 0px 0px; height: 70px">
+  <div class="row  ">
+    <div class="col-lg-6"><h1 class="fb-logo-main"> fakebook</h1>
 
     </div>
-    <div class="col-lg-6 mx-0 px-0">
-      <div class="row">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-4 ml-5">
-          <div class="field" style="color: white">
-          <%= f.label :Email  %><br/>
-              <%= f.email_field :email, autofocus: true, :autocomplete=>'off' %>
-          </div>
-        </div>
-        <div class="col-lg-4 ml-1">
-          <div class="field" style="color: white">
-          <%= f.label :password %><br/>
-              <%= f.password_field :password, placeholder: 'Password' %>
-          </div>
-        </div>
-        <div class="col-lg-2 ml-1">
-          <div class="actions" style="color: white; background-color: #3C5A98"><br/>
-              <%= f.submit "Log In",class: 'btn btn-primary', style: 'background-color: #3C5A98' %>
-            </div>
-          </div>
-        <div class="col-lg-1">
-        </div>
-        
-        <% end %>
-        
-        <!--<%= render 'devise/shared/links' %>-->
-
+    <div class="col-lg-6">
+    <div class="row">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), autofill: "off") do |f| %>
+      <div class="col-lg-1">
       </div>
+      <div class="col-lg-4 ml-5">
+      <div class="field" style="color: white">
+      <%= f.label :Email  %><br/>
+          <%= f.email_field :email, autofocus: true, autocomplete: 'disabled' %>
+      </div>
+      </div>
+      <div class="col-lg-4 ml-1">
+      <div class="field" style="color: white">
+      <%= f.label :password %><br/>
+          <%= f.password_field :password, autocomplete: 'disabled' %>
+      </div>
+      </div>
+      <div class="col-lg-2 ml-1">
+      <div class="actions" style="color: white; background-color: #3b59b6"><br/>
+          <%= f.submit "Log In",class: 'btn btn-primary' %>
+        </div>
+      </div>
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-2">
+      </div>
+      <% end %>
+      
+      <!--<%= render 'devise/shared/links' %>-->
+
+    </div>
     </div>
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-lg-6" style="margin-left: 100px">
-    <h3 class="fb-login-text">Fakebook helps you connect and share with the</br> people in your life.</h3>
-      <div>
-      <%= image_tag("fb-login-world.png", :alt => "no img") %>
-      </div>
+    <div class="col-lg-6">
     </div>
-    
+    <div class="col-lg-1">
+    </div>
     <div class="col-lg-4">
       <!--<h1><#%= t('.sign_up') %></h1>-->
       <h1 class="fb-signup ">Create a new account</h1>
       <h4 class="fb-signup-2 ">It's quick and easy</h3>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <!--<#%= bootstrap_devise_error_messages! %>-->
+        <%= bootstrap_devise_error_messages! %>
 
         
         <div class="form-group">
@@ -73,11 +71,11 @@
 
         <div class="form-group">
           <!--<#%= f.label :email %>-->
-          <%= f.email_field :email, placeholder: 'Email address', class: 'form-control', autocomplete: 'off' %>
+          <%= f.email_field :email, placeholder: 'Email address', class: 'form-control' %>
         </div>
         <div class="form-group">
           <!--<#%= f.label :password %>-->
-          <%= f.password_field :password, placeholder: 'Password', class: 'form-control', autocomplete: 'off' %>
+          <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
            </div>
       <div class="form-group">
           <!--<#%= f.label :password_confirmation %>-->
@@ -103,7 +101,7 @@
           <%= f.radio_button :gender, 'custom' %> Custom
         </div>
           
-        <p class="fb-signup-3">By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy. You may receive SMS notifications from us and can opt out at any time.</p>
+        <p>By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy. You may receive SMS notifications from us and can opt out at any time.</p>
 
 
         
@@ -112,7 +110,7 @@
 
         
         <div class="form-group">
-          <%= f.submit 'Sign up', class: 'btn btn-success btn-wide' %>
+          <%= f.submit t('.sign_up'), class: 'btn btn-success', id: 'btn-wide' %>
         </div>
       <% end %>
 

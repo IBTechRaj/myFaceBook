@@ -1,18 +1,33 @@
-        <nav class="navbar navbar-expand-md "  style= "background-color: #3b59b6">
+        <nav class="navbar navbar-expand-md "  style= "background-color: #3C5A98">
         
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto mt-3">
           <% if user_signed_in? %>
             
             <li class="nav-item" id="fb-logo">
             <%= image_tag("facebook-icon.png", :alt => "no img") %>
             </li>
             <li class="nav-item">
-            <div id="fb-search-set">
-              <form id="searchThis" action="/search" style="display: inline" method="get"><input onfocus="if(this.value==this.defaultValue)this.value='';" value="Search " type="text" id="searchBox" onblur="if(this.value=='')this.value=this.defaultValue;" vinput="" name="q" /> </form>
-              <input  value="" type="image"> <%= image_tag("fb-search.png", :alt => "no img") %>         
-            </div>
+            
+              <!--<form id="fb-search-box" action="/search" style="display: inline" method="get"><input onfocus="if(this.value==this.defaultValue)this.value='';" value="Search " type="text"  onblur="if(this.value=='')this.value=this.defaultValue;" vinput="" name="q" /> </form>-->
+              <!--<input  value="" type="image"> <#%= image_tag("fb-search.png", :alt => "no img", class: "fb-search-icon") %> -->        
+              <!--<form id="fb-search-box"  /> </form>
+              <input  value="" type="image"> <%= image_tag("fb-search.png", :alt => "no img", class: "fb-search-icon", placeholder: 'Search') %> -->
+              <div class="input-group">  
+                <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control", style: "width: 400px; height: 24px; margin-top: 2px" %>  
+                <div class="input-group-btn">  
+                <!--<%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>--> 
+                <%= image_tag("fb-search.png", :alt => "no img", class: "fb-search-icon", style: "margin-top: 3px") %> 
+                </div>
+              </div>          
+          
+            </li>
+            
+            <li class="nav-item">
+              <div class="profile-icon my-1">
+              <%= gravatar_for current_user, size: 30, class: "circle " %>
+              </div>
             </li>
             <li class="nav-item">
                 <%= link_to   current_user.first_name, user_path(current_user), class: "nav-link" %>

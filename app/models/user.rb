@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :date_of_birth, presence: true
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :validatable
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -31,7 +31,7 @@ has_many :friendships, dependent: :destroy
   has_many :confirmed_friends_posts, through: :confirmed_friends, source: :posts
   has_many :conirmed_inverse_friends_posts, through: :confirmed_inverse_friends, source: :posts
 
-
+ 
 
   def full_name
     return "#{first_name} #{last_name}".strip if first_name || last_name
