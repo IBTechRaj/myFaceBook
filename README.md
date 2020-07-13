@@ -3,14 +3,12 @@ Project: myFaceBook
 A simple app that is similar to facebook created using Rails.
 
 
-### Pre Requisite
+# Technologies
 
+-Rails
+-Bootstrap
 
-Git.
-
-Code editor.
-
-Rails.
+# Setup
 
 
 ## Live version 
