@@ -29,13 +29,19 @@ Open in browser with ```localhost:3000```
 The live version of the app can be found [here](https://rajfakebook.herokuapp.com)
 
 # Screen Shots
-###SignUp/SignIn
+### SignUp/SignIn
 ![fakebook SignUp/SignIn](/images/fakebook1.png)
 
-After SignUp
+### After SignUp
 ![fakebook after SignUp](/images/fakebook2.png)
+
+### After SignIn
 ![fakebook 4](/images/fakebook4.png)
+
+### Profile Page
 ![fakebook 5](/images/fakebook5.png)
+
+### All Users Page
 ![fakebook 6](/images/fakebook6.png)
 
 ### Author
