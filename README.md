@@ -8,6 +8,7 @@ A simple app that is similar to facebook created using Rails.
 - Comments
 - Likes
 - Friendships
+- Notifications
 
 # Technologies
 
@@ -29,11 +30,9 @@ The live version of the app can be found [here](https://rajfakebook.herokuapp.co
 
 # Screen Shots
 
-![fakebook 1](/images/fakebook1.png)
+![fakebook SignUp/SignIn](/images/fakebook1.png)
 
-![fakebook 1](/images/fakebook1.png)
-![fakebook 2](/images/fakebook2.png)
-![fakebook 3](/images/fakebook3.png)
+![fakebook after SignUp](/images/fakebook3.png)
 ![fakebook 4](/images/fakebook4.png)
 ![fakebook 5](/images/fakebook5.png)
 ![fakebook 6](/images/fakebook6.png)
