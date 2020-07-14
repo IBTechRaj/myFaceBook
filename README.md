@@ -25,7 +25,7 @@ Run your rails migration using ``` rails db:migrate ```
 Run the rails server by typing ```rails server``` in the terminal.
 Open in browser with ```localhost:3000```
 
-## Live version 
+# Live version 
 The live version of the app can be found [here](https://rajfakebook.herokuapp.com)
 
 # Screen Shots
