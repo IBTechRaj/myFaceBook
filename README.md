@@ -46,8 +46,8 @@ The live version of the app can be found [here](https://rajfakebook.herokuapp.co
 
 ### Author
 * [Rajasekhar K ](https://ibtechraj.github.io/RajPortfolio/)
-* Github : https://github.com/IBTechRaj
-* Email : krs30018@gmail.com
+* [Github](https://github.com/IBTechRaj)
+* [Email](krs30018@gmail.com)
 * [LinkedIn](https://www.linkedin.com/in/rajkatakamsetty/)
 * [Twitter](https://twitter.com/IBTechRaj) 
 
