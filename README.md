@@ -51,3 +51,6 @@ The live version of the app can be found [here](https://rajfakebook.herokuapp.co
 * [LinkedIn](https://www.linkedin.com/in/rajkatakamsetty/)
 * [Twitter](https://twitter.com/IBTechRaj) 
 
+
+# Licence
+This project is [MIT](https://github.com/IBTechRaj/myFaceBook/blob/master/LICENSE) licencsed.
